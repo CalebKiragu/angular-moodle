@@ -1,0 +1,30 @@
+<div class="mt-5">
+  <div class="row" *ngIf="!loading">
+    <div class="col-12" *ngFor="let theme of themes">
+      <h4>
+        <a href="#">{{ theme.name }}</a>
+        <div [innerHTML]="theme.summary"></div>
+        <div *ngFor="let module of theme.modules">
+          <div
+            *ngIf="module.description"
+            [innerHTML]="module.description"
+          ></div>
+          <div *ngIf="!module.description">
+            <a href="{{ module.url }}">{{ module.name }}</a>
+          </div>
+        </div>
+      </h4>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 mt-3" *ngIf="loading">
+    <img
+      src="/assets/img/loading.gif"
+      style="display: block;
+    margin-left: auto;
+    margin-right: auto;"
+    />
+  </div>
+</div>
